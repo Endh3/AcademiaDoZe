@@ -1,11 +1,10 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Enums
+public enum MatriculaPlano
 {
-    internal class MatriculaPlano
-    {
-    }
+    Mensal = 0,
+    Trimestral = 1,
+    Semestral = 2,
+    Anual = 3
 }

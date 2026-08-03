@@ -1,11 +1,14 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Enums
+[Flags]
+public enum MatriculaRestricoes
 {
-    internal class MatriculaRestricoes
-    {
-    }
+    None = 0,
+    Diabetes = 1,
+    PressaoAlta = 2,
+    Labirintite = 4,
+    Alergias = 8,
+    ProblemasRespiratorios = 16,
+    RemedioContinuo = 32
 }

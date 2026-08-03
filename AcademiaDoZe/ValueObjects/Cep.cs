@@ -1,11 +1,11 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.ValueObjects
+public record Cep
 {
-    internal class Cep
+    public string Valor { get; }
+    private Cep(string valor)
     {
+        Valor = valor;
     }
 }

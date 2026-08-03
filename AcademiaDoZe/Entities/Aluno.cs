@@ -1,11 +1,21 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AcademiaDoZe.Domain.ValueObjects;
+namespace AcademiaDoZe.Domain.Entities;
 
-namespace AcademiaDoZe.Entities
+public class Aluno : Pessoa
 {
-    internal class Aluno
+    // construtor privado para evitar instância direta
+    private Aluno(int id, string nome,
+
+    Cpf cpf,
+    DateOnly dataNascimento,
+    Telefone telefone,
+    Email email,
+    Endereco endereco,
+    Senha senha,
+    Arquivo foto)
+
+    : base(id, nome, cpf, dataNascimento, telefone, email, endereco, senha, foto)
     {
     }
 }

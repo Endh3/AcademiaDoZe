@@ -1,11 +1,18 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+using AcademiaDoZe.Domain.Entities;
 
-namespace AcademiaDoZe.ValueObjects
+namespace AcademiaDoZe.Domain.ValueObjects;
+
+public record Endereco
 {
-    internal class Endereco
+    public Logradouro Logradouro { get; }
+    public string Numero { get; }
+    public string Complemento { get; }
+    private Endereco(Logradouro logradouro, string numero, string complemento)
     {
+        Logradouro = logradouro;
+        Numero = numero;
+        Complemento = complemento;
     }
+
 }

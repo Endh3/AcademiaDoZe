@@ -1,11 +1,14 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.Entities;
 
-namespace AcademiaDoZe.Entities
+public class AcessoColaborador : Entity
 {
-    internal class AcessoColaborador
+    public Colaborador Colaborador { get; private set; }
+    public DateTime DataHora { get; private set; }
+    private AcessoColaborador(int id, Colaborador colaborador, DateTime dataHora) : base(id)
     {
+        Colaborador = colaborador;
+        DataHora = dataHora;
     }
+
 }

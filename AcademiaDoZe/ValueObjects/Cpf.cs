@@ -1,11 +1,11 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.ValueObjects
+public record Cpf
 {
-    internal class Cpf
+    public string Valor { get; }
+    private Cpf(string valor)
     {
+        Valor = valor;
     }
 }

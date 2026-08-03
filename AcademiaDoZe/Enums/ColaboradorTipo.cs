@@ -1,11 +1,9 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.Enums;
 
-namespace AcademiaDoZe.Enums
+public enum ColaboradorTipo
 {
-    internal class ColaboradorTipo
-    {
-    }
+    Administrador = 0,
+    Atendente = 1,
+    Instrutor = 2
 }

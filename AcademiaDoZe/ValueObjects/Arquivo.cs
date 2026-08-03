@@ -1,11 +1,11 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.ValueObjects
+public record Arquivo
 {
-    internal class Arquivo
+    public byte[] Conteudo { get; }
+    private Arquivo(byte[] conteudo)
     {
+        Conteudo = conteudo;
     }
 }

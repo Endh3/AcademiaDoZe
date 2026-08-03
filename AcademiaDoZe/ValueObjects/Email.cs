@@ -1,11 +1,11 @@
 ﻿//Matheus Ribeiro Pites De Liz
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AcademiaDoZe.Domain.ValueObjects;
 
-namespace AcademiaDoZe.ValueObjects
+public record Email
 {
-    internal class Email
+    public string Valor { get; }
+    private Email(string valor)
     {
+        Valor = valor;
     }
 }
