@@ -1,4 +1,7 @@
 ﻿//Matheus Ribeiro Pites De Liz
+using AcademiaDoZe.Domain.Common;
+using AcademiaDoZe.Domain.Services;
+
 namespace AcademiaDoZe.Domain.ValueObjects;
 
 public record Cpf
@@ -7,5 +10,14 @@ public record Cpf
     private Cpf(string valor)
     {
         Valor = valor;
+    }
+    public static Result<Cpf> Criar(string valor)
+    {
+        if (NormalizadoService.TextoVazioOuNulo(valor))
+            return Result<Cpf>.Failure("Cpf", "CPF_OBRIGATORIO");
+        var textoLimpo = NormalizadoService.LimparEDigitos(valor);
+        if (textoLimpo.Length != 11)
+            return Result<Cpf>.Failure("Cpf", "CPF_DIGITOS");
+        return Result<Cpf>.Success(new Cpf(textoLimpo));
     }
 }

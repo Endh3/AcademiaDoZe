@@ -31,4 +31,5 @@ public class Matricula : Entity
         LaudoMedico = laudoMedico;
         ObservacoesRestricoes = observacoesRestricoes;
     }
+
 }
