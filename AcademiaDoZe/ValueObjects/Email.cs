@@ -1,7 +1,5 @@
-﻿//Matheus Ribeiro Pites De Liz
-using AcademiaDoZe.Domain.Common;
+﻿using AcademiaDoZe.Domain.Common;
 using AcademiaDoZe.Domain.Services;
-
 namespace AcademiaDoZe.Domain.ValueObjects;
 
 public record Email

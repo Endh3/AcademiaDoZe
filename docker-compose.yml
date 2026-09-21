@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_academia
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: abcBolinhas12345
+      MYSQL_DATABASE: db_academia_do_ze
+    restart: always
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_academia
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: abcBolinhas12345
+      ACCEPT_EULA: "Y"
+    restart: always
