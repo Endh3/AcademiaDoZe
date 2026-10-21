@@ -86,7 +86,7 @@ public class MatriculaTests
         "Objetivo",
         restricoes,
         laudo,
-        observacoes
+        observacoes ?? ""
         );
         Assert.Equal(expectSuccess, result.IsSuccess);
     }

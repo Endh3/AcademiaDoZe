@@ -114,7 +114,7 @@ public class ValueObjectsTests
     ("valid", "", "NUMERO_OBRIGATORIO")]
     public void Deve_Falhar_Criacao_Quando_EnderecoInvalido
 
-    (string logradouroCase, string numero, string expected)
+    (string? logradouroCase, string numero, string expected)
 
     {
         Logradouro? logradouro = null;
