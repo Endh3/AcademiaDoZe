@@ -28,5 +28,11 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>CFBundleDisplayName</key>
+	<string>GYM Do Matheus</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Este aplicativo precisa de acesso à sua câmera para tirar fotos.</string>
 </dict>
 </plist>

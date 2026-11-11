@@ -15,7 +15,11 @@ Title="{Binding Title}">
                 <!-- Entry de busca -->
                 <Entry Grid.Column="2" Text="{Binding SearchText}" Placeholder="Digite o valor..." HeightRequest="40" VerticalOptions="Center" Margin="0,0,0,0"/>
                 <!-- Botão de busca -->
-                <Button Grid.Column="4" Text="Buscar" Style="{StaticResource ButtonPrimary}" FontSize="14" WidthRequest="80" HeightRequest="40" Margin="0,0,0,0" Command="{Binding SearchLogradourosCommand}"/>
+                <Button Grid.Column="4" Text="Buscar" Style="{StaticResource ButtonPrimary}" FontSize="14" WidthRequest="160" HeightRequest="40" Margin="0,0,0,0" Command="{Binding SearchLogradourosCommand}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe8b6;" />
+                    </Button.ImageSource>
+                </Button>
             </Grid>
         </Border>
         <!-- Lista de Logradouros com FAB - "Floating Action Button" - Botão de Ação Flutuante -->
@@ -50,8 +54,16 @@ Title="{Binding Title}">
 
                                         <!-- Botões de Ação -->
 
-                                        <Button Grid.Row="0" Grid.Column="1" Text="Editar" Style="{StaticResource ButtonSmall}" Margin="4,0" Clicked="OnEditButtonClicked" />
-                                        <Button Grid.Row="0" Grid.Column="2" Text="Excluir" Style="{StaticResource ButtonDanger}" Margin="4,0" Clicked="OnDeleteButtonClicked" />
+                                        <Button Grid.Row="0" Grid.Column="1" Text="Editar" Style="{StaticResource ButtonSmall}" Margin="4,0" Clicked="OnEditButtonClicked" WidthRequest="150">
+                                        <Button.ImageSource>
+                                            <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe3c9;" />
+                                        </Button.ImageSource>
+                                        </Button>
+                                        <Button Grid.Row="0" Grid.Column="2" Text="Excluir" Style="{StaticResource ButtonDanger}" Margin="4,0" Clicked="OnDeleteButtonClicked" WidthRequest="150">
+                                            <Button.ImageSource>
+                                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe872;" />
+                                            </Button.ImageSource>
+                                        </Button>
                                     </Grid>
                                 </Border>
                             </Grid>
