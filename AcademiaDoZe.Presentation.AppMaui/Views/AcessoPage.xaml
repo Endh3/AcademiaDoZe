@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+x:Class="AcademiaDoZe.Presentation.AppMaui.Views.AcessoPage"
+xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
+xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
+x:DataType="vm:AcessoViewModel"
+Title="{Binding Title}">
+    <ContentPage.Resources>
+        <converters:FotoToImageSourceConverter x:Key="FotoToImageSourceConverter" />
+        <!-- item da lista "Acessos Registrados Hoje" -->
+        <DataTemplate x:Key="AcessoItemTemplate" x:DataType="dto:AcessoRegistroDto">
+            <Grid ColumnDefinitions="*,Auto" Padding="0,6">
+                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                    <Label Text="{Binding Nome}" FontAttributes="Bold" FontSize="14"/>
+                    <Label Text="{Binding Descricao}" FontSize="11" LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+                <Label Grid.Column="1" Text="{Binding HoraTexto}" FontSize="11" VerticalOptions="Start"/>
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Spacing="12" Padding="15">
+                <!-- Modo: Aluno ou Colaborador -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Controle de Acesso / Catraca" Style="{StaticResource SubHeadline}"/>
+                        <Label Text="Selecione se o acesso é de um Aluno ou Colaborador:" FontSize="11" HorizontalOptions="Center"/>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <Button Grid.Column="0" Text=" Aluno" Style="{StaticResource ButtonPrimary}" Command="{Binding SelecionarAlunoCommand}">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe80c;" />
+                                </Button.ImageSource>
+                            </Button>
+                            <Button Grid.Column="1" Text=" Colaborador" Style="{StaticResource ButtonPrimary}" Command="{Binding SelecionarColaboradorCommand}">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xea67;" />
+                                </Button.ImageSource>
+                            </Button>
+                        </Grid>
+                        <Label Text="{Binding ModoTexto}" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+                <!-- Localizar pessoa -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Localizar Pessoa" Style="{StaticResource SubHeadline}"/>
+                        <Entry Text="{Binding SearchText}" Placeholder="Digite o nome ou o CPF..." ClearButtonVisibility="WhileEditing"/>
+                        <Label Text="{Binding SelecioneTexto}" FontAttributes="Bold" FontSize="12"/>
+                        <Picker Title="Toque para escolher..." ItemsSource="{Binding Opcoes}" SelectedIndex="{Binding IndiceSelecionado}"/>
+                    </VerticalStackLayout>
+                </Border>
+                <!-- Identificação e liberação -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Identificação e Liberação" Style="{StaticResource SubHeadline}"/>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" IsVisible="{Binding TemPessoaSelecionada}">
+                            <Border Grid.Column="0" WidthRequest="64" HeightRequest="64" StrokeThickness="0" StrokeShape="RoundRectangle 32">
+                                <Image Source="{Binding PessoaSelecionada.Foto, Converter={StaticResource FotoToImageSourceConverter}}" Aspect="AspectFill"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                                <Label Text="{Binding PessoaSelecionada.Nome}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding PessoaSelecionada.Cpf, StringFormat='CPF: {0}'}" FontSize="11"/>
+                                <Label Text="{Binding StatusTexto}" FontAttributes="Bold" FontSize="11"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Label Text="Nenhuma pessoa selecionada." HorizontalOptions="Center" IsVisible="{Binding SemPessoaSelecionada}"/>
+                        <Button Text="{Binding BotaoTexto}" Style="{StaticResource ButtonPrimary}" Command="{Binding RegistrarCommand}" IsEnabled="{Binding TemPessoaSelecionada}">
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe897;" />
+                            </Button.ImageSource>
+                        </Button>
+                    </VerticalStackLayout>
+                </Border>
+                <!-- Resultado da última tentativa -->
+                <Border IsVisible="{Binding TemResultado}" BackgroundColor="{Binding ResultadoCor}" Stroke="Transparent" StrokeShape="RoundRectangle 10" Padding="12">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Label Grid.Column="0" FontFamily="MaterialIcons" Text="{Binding ResultadoIcone}" FontSize="22" TextColor="White" VerticalOptions="Center"/>
+                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="{Binding Resultado.Titulo}" FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="{Binding Resultado.Mensagem}" FontSize="12" TextColor="White" LineBreakMode="WordWrap"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+                <!-- Acessos de hoje -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Grid.Column="0" Text="Acessos Registrados Hoje" Style="{StaticResource SubHeadline}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Button Grid.Column="1" Text="Atualizar" Style="{StaticResource ButtonSmall}" Command="{Binding AtualizarCommand}">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="MaterialIcons" Glyph="&#xe5d5;" />
+                                </Button.ImageSource>
+                            </Button>
+                        </Grid>
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding AcessosHoje}" BindableLayout.ItemTemplate="{StaticResource AcessoItemTemplate}">
+                            <BindableLayout.EmptyView>
+                                <Label Text="Nenhum acesso registrado hoje." HorizontalOptions="Center"/>
+                            </BindableLayout.EmptyView>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </Grid>
+</ContentPage>

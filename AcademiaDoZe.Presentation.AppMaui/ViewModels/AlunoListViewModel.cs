@@ -80,7 +80,7 @@ public partial class AlunoListViewModel : BaseViewModel
             // Limpa a lista atual
             await MainThread.InvokeOnMainThreadAsync(() => { Alunos.Clear(); });
             IEnumerable<AlunoDto> resultados = [];
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             // Busca os alunos de acordo com o filtro selecionado
             if (string.IsNullOrWhiteSpace(SearchText))
             {
@@ -165,7 +165,7 @@ public partial class AlunoListViewModel : BaseViewModel
                 Alunos.Clear();
                 OnPropertyChanged(nameof(Alunos));
             });
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var alunosList = await _alunoService.ObterTodosAsync(cts.Token);
             if (alunosList != null)
             {
@@ -212,7 +212,7 @@ public partial class AlunoListViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             bool success = await _alunoService.RemoverAsync(aluno.Id, cts.Token);
             if (success)
             {

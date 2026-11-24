@@ -176,7 +176,7 @@ public partial class MatriculaViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var matriculaData = await _matriculaService.ObterPorIdAsync(MatriculaId, cts.Token);
             if (matriculaData != null)
             {
@@ -210,7 +210,7 @@ public partial class MatriculaViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             AlunoDto? alunoData = null;
             if (Matricula.AlunoMatricula?.Id > 0)
             {
@@ -263,7 +263,7 @@ public partial class MatriculaViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var cpfLimpo = new string(Matricula.AlunoMatricula.Cpf.Where(char.IsDigit).ToArray());
             var alunoData = await _alunoService.ObterPorCpfAsync(cpfLimpo, cts.Token)
             ?? await _alunoService.ObterPorCpfAsync(Matricula.AlunoMatricula.Cpf, cts.Token);

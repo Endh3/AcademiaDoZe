@@ -74,7 +74,7 @@ public partial class LogradouroViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var logradouroData = await _logradouroService.ObterPorIdAsync(LogradouroId, cts.Token);
             if (logradouroData != null)
             {
@@ -111,7 +111,7 @@ public partial class LogradouroViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var logradouroData = await _logradouroService.ObterPorCepAsync(apenasDigitos, cts.Token);
             if (logradouroData != null)
             {
@@ -149,7 +149,7 @@ public partial class LogradouroViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             // Normaliza os dados antes de persistir
             Logradouro.Cep = new string([.. Logradouro.Cep.Where(char.IsDigit)]);
             Logradouro.Estado = Logradouro.Estado.Trim().ToUpperInvariant();

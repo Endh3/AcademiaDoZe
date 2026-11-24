@@ -36,7 +36,7 @@ public partial class ConfigPage : ContentPage
         {
             DatabaseTypePicker.Items.Add(tipo.ToString());
         }
-        var bancoAtual = Preferences.Get("DatabaseType", AppDatabaseType.Sqlite.ToString());
+        var bancoAtual = Preferences.Get("DatabaseType", AppDatabaseType.SqlServer.ToString());
         DatabaseTypePicker.SelectedItem = bancoAtual;
         AtualizarInterfacePorTipoBanco();
     }

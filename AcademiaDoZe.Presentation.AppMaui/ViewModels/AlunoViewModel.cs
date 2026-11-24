@@ -95,7 +95,7 @@ public partial class AlunoViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var alunoData = await _alunoService.ObterPorIdAsync(AlunoId, cts.Token);
             if (alunoData != null)
             {
@@ -149,7 +149,7 @@ public partial class AlunoViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var alunoData = await _alunoService.ObterPorCpfAsync(apenasDigitos, cts.Token);
             if (alunoData != null)
             {
@@ -208,7 +208,7 @@ public partial class AlunoViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var logradouroData = await _logradouroService.ObterPorCepAsync(apenasDigitos, cts.Token);
             if (logradouroData != null)
             {
@@ -247,7 +247,7 @@ public partial class AlunoViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             // Se o endereço foi digitado mas não tem ID ainda, tenta buscar pelo CEP
             if (Aluno.Endereco != null && Aluno.Endereco.Id <= 0 && !string.IsNullOrWhiteSpace(Aluno.Endereco.Cep))
             {

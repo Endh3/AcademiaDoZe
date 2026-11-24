@@ -78,7 +78,7 @@ public partial class MatriculaListViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             // Limpa a lista atual
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
@@ -164,7 +164,7 @@ public partial class MatriculaListViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             // Limpa a lista atual antes de carregar novos dados
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
@@ -209,7 +209,7 @@ public partial class MatriculaListViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             bool success = await _matriculaService.RemoverAsync(matricula.Id, cts.Token);
             if (success)
             {

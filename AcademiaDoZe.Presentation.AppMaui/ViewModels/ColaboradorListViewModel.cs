@@ -81,7 +81,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
             // Limpa a lista atual
             await MainThread.InvokeOnMainThreadAsync(() => { Colaboradores.Clear(); });
             IEnumerable<ColaboradorDto> resultados = [];
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             // Busca os colaboradores de acordo com o filtro selecionado
             if (string.IsNullOrWhiteSpace(SearchText))
             {
@@ -197,7 +197,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
                 Colaboradores.Clear();
                 OnPropertyChanged(nameof(Colaboradores));
             });
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             var colaboradoresList = await _colaboradorService.ObterTodosAsync(cts.Token);
             if (colaboradoresList != null)
             {
@@ -244,7 +244,7 @@ public partial class ColaboradorListViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
             bool success = await _colaboradorService.RemoverAsync(colaborador.Id, cts.Token);
             if (success)
             {

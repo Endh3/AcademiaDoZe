@@ -33,10 +33,10 @@ public static class ConfigurationHelper
     /// </summary>
     public static (string ConnectionString, AppDatabaseType DatabaseType) ObterConfiguracaoAtual()
     {
-        var databaseTypeStr = Preferences.Get("DatabaseType", AppDatabaseType.Sqlite.ToString());
+        var databaseTypeStr = Preferences.Get("DatabaseType", AppDatabaseType.SqlServer.ToString());
         if (!Enum.TryParse<AppDatabaseType>(databaseTypeStr, out var databaseType))
         {
-            databaseType = AppDatabaseType.Sqlite;
+            databaseType = AppDatabaseType.SqlServer;
         }
         string connectionString;
         if (databaseType == AppDatabaseType.Sqlite)
